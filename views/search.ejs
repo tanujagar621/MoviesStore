@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Search</title>
+</head>
+
+<body>
+    <div class="container">
+        <% if(error) { %>
+            <h2 class="error">
+                <%= error %>
+            </h2>
+        <% } %>
+        <form class="search-form" action="/search" method="post">
+            <input type="text" name="title" placeholder="search" value="<%= title %> ">
+            <button class="btn" type="submit">Search</button>
+        </form>
+        <div class="results-container">
+            <h1>Search Results For <%= title%>: </h1>
+            <% if(results) { results.forEach(result=> {%>
+                <div class="result">
+                    <% images="http://image.tmdb.org/t/p/w500" +result.poster_path %>
+                    <% img2="http://image.tmdb.org/t/p/original" +result.backdrop_path %>
+                    <% if(result.poster_path==undefined){ %>
+                    <img
+                        src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Noimage.svg/739px-Noimage.svg.png'
+                        alt="Card image cap">
+                    <% } else { %>
+                        <img class='poster' src=<%=images %> alt="poster">
+                    <% } %>
+                    <div class="details">
+                        <h2><%= result.title %></h2>
+                        <p><%= result.overview %></p>
+                        <form action="/search/<%= result.id %> " method="get">
+                            <button class="btn btn-success">
+                                More Info
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <%}) } %>
+        </div>
+    </div>
+</body>
+</html>

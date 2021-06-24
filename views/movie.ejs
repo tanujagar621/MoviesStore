@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/movie.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title><%= data?data.title:'Error' %></title>
+</head>
+<body>
+    <% if(error) { %>
+        <h2 class="error">
+            <%= error %>
+        </h2>
+    <% } %>
+        <% if(data) { %> 
+            <% var img1="http://image.tmdb.org/t/p/w500" +data.poster_path 
+               var img2="http://image.tmdb.org/t/p/original" +data.backdrop_path %>
+            <div class="background">
+                <img src="<%= img2 %>" alt="">
+            </div>
+            <div class="container">
+                <div class="movie-page">
+                    <div class="poster-img">
+                        <img alt="poster" src="<%=img1 %>">
+                    </div>
+                    <div class="details">
+                        <% const year = data.release_date.substring(0,4) %>
+                        <div class="title"> <%= `${data.title} (${year})` %> </div>
+                        <p align="left">
+                            Release Date:
+                            <b>
+                                <%=data.release_date%>
+                            </b>
+                        </p>
+                        <p>
+                            Genre:
+                            <% data.genres.forEach(genre => {%>
+                                <b><%=genre.name%> </b>
+                            <%}); %>
+                        </p>
+                        <p>
+                            Duration: <b>
+                                <%=data.runtime%>min
+                            </b>
+                        </p>
+                        <p>
+                            Adult: <b>
+                                <%=data.adult%>
+                            </b>
+                        </p>
+                        <p>
+                            Original language: <b>
+                                <%=data.original_language%>
+                            </b>
+                        </p>
+                        <h4>
+                            Tagline: <b>
+                                <%=data.tagline%>
+                            </b>
+                        </h4>
+                        <h4>
+                            Overview:</h4>
+                        <p>
+                            <%=data.overview%>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+            
+</body>
+</html>

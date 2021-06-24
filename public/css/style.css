@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui;
+}
+body {
+    margin-top: 0;
+    background-color: rgb(48, 38, 38);
+    color: white;
+}
+.container {
+    width: 90vw;
+    min-height: 100vh;
+    margin: auto;
+    padding: 1rem;
+}
+.title {
+    font-size: 2.2rem;
+    font-weight: 550;
+}
+.error {
+    background-color: rgb(182, 147, 147);
+    color: red;
+    text-align: center;
+    font-size: 2rem;
+}
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
+.search-form input {
+    width: 30vw;
+    height: 2rem;
+    font-size: 1.3rem;
+    border-radius: 0.4rem;
+    outline: none;
+    padding: 5px;
+}
+.btn {
+    cursor: pointer;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    border: 1px solid black;
+    background: rgb(89, 131, 70);
+    color: rgb(93, 210, 214);
+    padding: 3px;
+}
+.btn-success {
+    background-color: rgb(30, 146, 30);
+}
+
+.poster {
+    height: 15rem;
+}
+
+.results-container {
+    padding: 1rem 0;
+}
+
+.result {
+    background-color: rgb(105, 212, 212);
+    border: 2px solid rgb(65, 41, 41);
+    border-collapse: collapse;
+    display: flex;
+    padding: 0.5rem;
+    margin-top: 1rem;
+}
+.details {
+    margin: 0.5rem;
+}
+.details p {
+    font-size: 1.2rem;
+}
