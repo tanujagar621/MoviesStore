@@ -1,0 +1,29 @@
+.title {
+    font-size: 1rem;
+}
+.container {
+    width: 100%;
+}
+.most-popular {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.item {
+    border: 1px solid rgb(105, 105, 104);
+    width: 25%;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;   
+}
+.img-container {
+    width: 10rem;
+    margin: auto;
+}
+.title {
+    /* width: 90%; */
+    margin: auto;
+}

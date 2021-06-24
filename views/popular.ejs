@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/popular.css">
+    <title>MoviesWorld</title>
+</head>
+
+<body>
+    <%- include('./partials/header') %>
+    <div class="container">
+        <%- include('./partials/search-form', {title: '' }) %>
+        <h1>Most Popular Movies:</h1>
+        <div class="most-popular">
+            <% results.forEach(result => { %>
+                <div class="item">
+                    <% images="http://image.tmdb.org/t/p/w500" +result.poster_path %>
+                    <% img2="http://image.tmdb.org/t/p/original" +result.backdrop_path %>
+                    <a href="/search/movie/<%= result.id %>">
+                        <div class="img-container">
+                            <div class="rating" title="Rating">
+                                <%= result.vote_average*10 %>%
+                            </div>
+                            <% if(result.poster_path==undefined){ %>
+                                <img class='poster'
+                                    src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Noimage.svg/739px-Noimage.svg.png'
+                                    alt="Card image cap">
+                            <% } else { %>
+                                    <img class='poster' src=<%=images %> alt="poster">
+                            <% } %>
+                        </div>
+                        <div class="title">
+                            <% let year, title, type 
+                                year=result.release_date && result.release_date.substring(0,4) 
+                                title=result.title 
+                            %>
+                            <h4>
+                                <%= `${title} (${year})` %>
+                            </h4>
+                        </div>
+                    </a>
+                </div>
+            <% }); %> 
+        </div>
+    </div>
+
+</body>
+
+</html>

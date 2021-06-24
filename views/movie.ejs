@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/movie.css">
-    <link rel="stylesheet" type="text/css"
-        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title><%= data?data.title:'Error' %></title>
 </head>
 <body>
+    <%- include('./partials/header') %>
     <% if(error) { %>
         <h2 class="error">
             <%= error %>
@@ -28,12 +28,23 @@
                         <img alt="poster" src="<%=img1 %>">
                     </div>
                     <div class="details">
-                        <% const year = data.release_date.substring(0,4) %>
-                        <div class="title"> <%= `${data.title} (${year})` %> </div>
+                        <% let date, title, lastdate
+                            if(type === 'tv') {
+                                date = data.first_air_date
+                                title = data.name
+                                lastdate = data.last_air_date
+                            } else {
+                                date = data.release_date
+                                title = data.title
+                            }
+                         %>
+                        <% const year = date.substring(0,4)
+                           const endyear = lastdate? lastdate.substring(0,4):0 %>
+                        <div class="title"> <%= `${title} (${year}${endyear?` - ${endyear}`:""})` %> </div>
                         <p align="left">
-                            Release Date:
+                            Date:
                             <b>
-                                <%=data.release_date%>
+                                <%=date%>
                             </b>
                         </p>
                         <p>
