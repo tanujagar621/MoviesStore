@@ -16,9 +16,9 @@ body {
 /* header */
 nav {
     /* position: fixed; */
-    height: 5rem;
-    background-color: rgba(220, 20, 60, 0.418);
-    width: 98vw;
+    height: 3.5rem;
+    background-color: rgba(207, 80, 105, 0.418);
+    /* width: 98vw; */
     margin: auto;
     text-transform: capitalize;
     font-size: 1.2rem;
@@ -27,16 +27,27 @@ nav {
     justify-content: space-between;
     align-items: center;
 }
+nav .left {
+    display: flex;
+    min-width: 40%;
+    align-items: center;
+    justify-content: space-between;
+}
+nav .right {
+    display: flex;
+    align-items: center;
+}
 nav .center ul,
-nav .right ul{
+nav .right ul {
     display: flex;
     justify-content: start;
+    align-items: center;
 }
 li {
     list-style: none;
 }
 nav .center li {
-    margin: 0 1rem;
+    margin: 0 0.5rem;
 }
 nav .right li {
     margin: 0.5rem;
@@ -53,7 +64,7 @@ form {
 }
 .container {
     width: 90vw;
-    min-height: 100vh;
+    min-height: 85vh;
     margin: auto;
     padding: 1rem;
 }
@@ -70,16 +81,19 @@ form {
 .search-form {
     display: flex;
     justify-content: center;
-    margin: 1rem;
+    align-items: center;
+    padding: 0;
+    margin: 0.5rem;
 }
 .search-form input {
-    width: 30vw;
+    /* width: 30vw; */
     height: 2.3rem;
-    margin: 0 2px;
-    font-size: 1.3rem;
+    margin-right: 2px;
+    font-size: 1rem;
     border-radius: 0.4rem;
     outline: none;
     padding: 5px;
+    border: 1px solid black;
 }
 .btn {
     cursor: pointer;

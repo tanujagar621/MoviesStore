@@ -6,20 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/popular.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/popular.css">
     <title>MoviesWorld</title>
 </head>
 
 <body>
     <%- include("./partials/header") %>
     <div class="container">
-        <h1 class="heading">Most Popular Movies</h1>
+        <h1 class="heading">Most Movies and Shows</h1>
         <div class="most-popular">
-            <% results && results.forEach(result=> { %>
+            <% results.forEach(result=> { %>
                 <div class="item">
                     <% poster_image="http://image.tmdb.org/t/p/w500" +result.poster_path %>
-                    <a href="/search/movie/<%= result.id %>">
+                    <a href="/search/<%= result.media_type %>/<%= result.id %>">
                         <div class="img-container">
                             <div class="rating" title="Rating">
                                 <%= result.vote_average*10 %>%
@@ -34,24 +34,25 @@
                         </div>
                         <div class="title">
                             <%
-                                let year, title
-                                if(type === 'movie') {
+                                let year, title, type
+                                if(result.media_type === 'movie') {
                                     year= result.release_date && result.release_date.substring(0,4)
                                     title = result.title
-                                } else if(type === 'tv') {
+                                    type = 'Movie'
+                                } else if(result.media_type === 'tv') {
                                     year= result.first_air_date && result.first_air_date.substring(0,4)
                                     title = result.name
+                                    type = 'Tv Series'
                                 }
-                                // const year=result.release_date && result.release_date.substring(0,4) 
-                                // const title=result.title 
                             %>
-                            <h4>
+                            <h3>
                                 <%= `${title} (${year})` %>
-                            </h4>
+                            </h3>
+                            <strong class="type" ><%= `${type}` %> </strong>
                         </div>
                     </a>
                 </div>
-            <% }); %>
+            <% }); %> 
         </div>
     </div>
 </body>

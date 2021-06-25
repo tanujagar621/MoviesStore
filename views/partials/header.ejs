@@ -3,19 +3,26 @@
         <div class="logo">
             <h2><a href="/">MoviesHere</a></h2>
         </div>
-    </div>
-    <div class="center">
-        <ul>
-            <li>
-                <a href="/">trending</a>
-            </li>
-            <li>
-                <a href="/">popular</a>
-            </li>
-        </ul>
+        <div class="center">
+            <ul>
+                <li>
+                    <a href="/">home</a>
+                </li>
+                <li>
+                    <a href="/trending">trending</a>
+                </li>
+                <li>
+                    <a href="/mostpopular/movie">popular movies</a>
+                </li>
+                <li>
+                    <a href="/mostpopular/tv">popular shows</a>
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="right">
         <ul>
+            <li><%- include('./search-form', {title: '' }) %></li>
             <li><a class="btn btn-success" href="">SignUp</a></li>
             <li><a class="btn btn-success" href="">Login</a></li>
         </ul>

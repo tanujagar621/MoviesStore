@@ -18,13 +18,12 @@
                 <%= error %>
             </h2>
         <% } %>
-        <%- include('./partials/search-form', {title: title}) %> 
+        <%-// include('./partials/search-form', {title: title}) %> 
         <div class="results-container">
             <h1>Search Results For <%= title %>: </h1>
             <% if(results) { results.forEach(result=> {%>
                 <div class="result">
                     <% images="http://image.tmdb.org/t/p/w500" +result.poster_path %>
-                    <% img2="http://image.tmdb.org/t/p/original" +result.backdrop_path %>
                     <div class="img-container">
                         <div class="rating" title="Rating"><%= result.vote_average*10 %>%</div>
                         <% if(result.poster_path==undefined){ %>

@@ -4,16 +4,13 @@ const fetch = require('node-fetch')
 
 
 router.get("/:type/:id", async (req, res) => {
-  // console.log(req.params);
   const id = req.params.id;
   const type = req.params.type;
-//   console.log(id, type);
   const url_api = `https://api.themoviedb.org/3/${type}/${id}?api_key=${process.env.API_KEY}`
   try {
     await fetch(url_api)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.success === false) {
           res.render("movie", {
             data: null,
