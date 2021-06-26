@@ -94,6 +94,7 @@ form {
     outline: none;
     padding: 5px;
     border: 1px solid black;
+    background: border-box;
 }
 .btn {
     cursor: pointer;

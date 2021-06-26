@@ -19,7 +19,7 @@
             <% results && results.forEach(result=> { %>
                 <div class="item">
                     <% poster_image="http://image.tmdb.org/t/p/w500" +result.poster_path %>
-                    <a href="/search/movie/<%= result.id %>">
+                    <a href="/search/<%= type %>/<%= result.id %>">
                         <div class="img-container">
                             <div class="rating" title="Rating">
                                 <%= result.vote_average*10 %>%
