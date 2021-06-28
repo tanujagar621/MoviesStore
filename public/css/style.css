@@ -163,7 +163,7 @@ form {
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
-    border: 2px solid black;
+    /* border: 1px solid black; */
     padding: 5px;
 }
 .alert-success {
