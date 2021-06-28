@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/auth.css">
+    <title>Register</title>
+</head>
+
+<body>
+    <%-// include ('./partials/header') %> 
+    <div class="container">
+        <h1 class="heading">Register to MoviesHere</h1>
+        <h5><%- include ('./partials/alert') %> </h5>
+        <form action="/users/register" method="post">
+            <div class="field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" value=<%= typeof name != 'undefined' ? name : '' %>  >
+            </div>
+            <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value=<%= typeof email != 'undefined' ? email : '' %>  >
+            </div>
+            <div class="field">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" value=<%= typeof age != 'undefined' ? age : '' %>  >
+            </div>
+            <div class="field">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div class="field">
+                <label for="password2">Confirm Password</label>
+                <input type="password" id="password2" name="password2">
+            </div>
+            <div class="btns">
+                <button type="submit" class="btn btn-success">Sign Up</button>
+                <a href="/users/login" title="click to login" >Login Here</a>
+            </div>
+        </form>
+    </div>
+    <script src="/js/index.js"></script>
+</body>
+</html>
