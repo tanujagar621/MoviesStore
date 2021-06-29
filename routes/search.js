@@ -40,8 +40,9 @@ router.get("/:type/:id", async (req, res) => {
 
 router.get('/', async (req, res) => {
     const title = req.query.title
+    const user = req.user;
     // console.log(title);
-    const url_api = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&query=${title}`
+    const url_api = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&query=${title}&include_adult=${ user?user.age >= 18: true }"`
     try {
         await fetch(url_api).then(res => res.json()).then(data => {
             if(data.total_results === 0) {

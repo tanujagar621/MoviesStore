@@ -1,8 +1,6 @@
 <% if(typeof errors !='undefined') { errors.forEach(err=> { %>
-    <div class="alert alert-danger">
-        <div class="message">
-            <%= err.msg %>
-        </div>
+    <div class="alert alert-danger 1">
+        <div class="message"><%= err.msg %></div>
         <button class="close" type="button">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -11,30 +9,32 @@
 } %>
 
 <% if(success_msg != '') { %>
-    <div class="alert alert-success">
-        <div class="message">
-            <%= success_msg %>
-        </div>
+    <div class="alert alert-success 1">
+        <div class="message"><%= success_msg %></div>
         <button class="close" type="button">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 <% } %> 
 <% if(error_msg != '') { %>
-    <div class="alert alert-danger">
-        <div class="message">
-            <%= error_msg %>
-        </div>
+    <div class="alert alert-danger 2">
+        <div class="message"><%= error_msg %></div>
         <button class="close" type="button">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 <% } %> 
-<% if(error != '') { %>
-    <div class="alert alert-danger">
-        <div class="message">
-            <%= error %>
-        </div>
+<% if(error && error != '') { console.log(error) %>
+    <div class="alert alert-danger 3">
+        <div class="message"><%= error %></div>
+        <button class="close" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<% } %> 
+<% if(success != '') { %>
+    <div class="alert alert-success 2">
+        <div class="message"><%= success %></div>
         <button class="close" type="button">
             <span aria-hidden="true">&times;</span>
         </button>

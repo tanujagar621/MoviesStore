@@ -4,16 +4,16 @@ const User = require('../models/User')
 const bcrypt = require('bcrypt')
 const passport = require('passport')
 
-const { ensureAuthenticated } = require('../config/auth')
+const { ensureAuthenticated, ensureNotAuthenticated } = require('../config/auth')
 
-router.get('/register', (req, res) => {
+router.get('/register', ensureNotAuthenticated, (req, res) => {
     res.render('register');
 })
-router.get('/login', (req, res) => {
+router.get('/login', ensureNotAuthenticated, (req, res) => {
     res.render('login');
 })
 
-router.post('/register', async (req, res) => {
+router.post('/register',ensureNotAuthenticated, async (req, res) => {
     const { name, email, age, password, password2 } = req.body;
     let errors = []
     if(!name || !email || !password || !password2) {
@@ -70,15 +70,16 @@ router.post('/register', async (req, res) => {
     }
 })
 
-router.post('/login', (req, res, next) => {
+router.post('/login',ensureNotAuthenticated, (req, res, next) => {
     passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/users/login',
         failureFlash: true,
+        successFlash: 'Welcome to MoviesHere'
     })(req, res, next);
 })
 
-router.get('/logout', (req, res) => {
+router.get('/logout', ensureAuthenticated, (req, res) => {
     req.logout()
     req.flash('success_msg', "you are successfully logged out")
     res.redirect('/users/login')
